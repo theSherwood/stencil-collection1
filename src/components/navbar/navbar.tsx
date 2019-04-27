@@ -29,6 +29,7 @@ export class Navbar {
       }
       elmnt = elmnt.parentElement;
     }
+    console.log(e.target);
   }
 
   render() {
@@ -39,34 +40,33 @@ export class Navbar {
       position: this.position,
       width: "100%",
       top: "0",
-      left: "0",
-      padding: ".8em"
+      left: "0"
     };
     return (
       <nav id="nav" style={navStyle}>
-        <div id="left-wrapper">
+        <div id="left-wrapper" class="wrapper">
           <slot name="left-icon" />
           <div
             id="left-list"
-            class={this.showLeft ? "hidden-list" : "shown-list"}
+            class={this.showLeft ? "shown-list" : "hidden-list"}
           >
             <slot name="left" />
           </div>
         </div>
-        <div id="middle-wrapper">
+        <div id="middle-wrapper" class="wrapper">
           <slot name="middle-icon" />
           <div
             id="middle-list"
-            class={this.showMiddle ? "hidden-list" : "shown-list"}
+            class={this.showMiddle ? "shown-list" : "hidden-list"}
           >
             <slot name="middle" />
           </div>
         </div>
-        <div id="right-wrapper">
+        <div id="right-wrapper" class="wrapper">
           <slot name="right-icon" />
           <div
             id="right-list"
-            class={this.showRight ? "hidden-list" : "shown-list"}
+            class={this.showRight ? "shown-list" : "hidden-list"}
           >
             <slot name="right" />
           </div>
