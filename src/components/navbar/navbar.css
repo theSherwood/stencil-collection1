@@ -1,0 +1,8 @@
+::slotted([slot="left"]) {
+  color: blue;
+  display: none;
+}
+
+::slotted([slot="left-icon"]) {
+  color: yellow;
+}

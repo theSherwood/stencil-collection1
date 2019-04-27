@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Prop, Element, Listen, State } from "@stencil/core";
 
 @Component({
   tag: "admls-navbar",
@@ -6,12 +6,21 @@ import { Component, Prop } from "@stencil/core";
   shadow: true
 })
 export class Navbar {
+  @Element() el: HTMLElement;
+
+  @State() showLeft = false;
+
   @Prop() styles;
   @Prop({ reflectToAttr: true }) background: string = "black";
   @Prop({ reflectToAttr: true }) color: string = "white";
   @Prop({ reflectToAttr: true }) height: string = "50px";
   @Prop({ reflectToAttr: true }) position: string = "fixed";
   @Prop({ reflectToAttr: true }) display: string = "block";
+
+  @Listen("click")
+  onclick(e) {
+    console.log(e.target);
+  }
 
   render() {
     const navStyle = this.styles || {
@@ -24,15 +33,18 @@ export class Navbar {
       left: "0"
     };
     return (
-      // <div style={{ background: "black", height: "50px" }}>
       <nav style={navStyle}>
-        <slot name="left" />
-        <slot name="left-icon" />
-        <slot name="middle" />
+        <div id="left-wrapper">
+          <slot name="left-icon" />
+          <div id="left-list">
+            <slot name="left" />
+          </div>
+        </div>
+        {/* <slot name="middle" />
+        <slot name="middle-icon" />
         <slot name="right" />
-        <slot name="right-icon" />
+        <slot name="right-icon" /> */}
       </nav>
-      // </div>
     );
   }
 }
