@@ -1,8 +1,20 @@
 ::slotted([slot="left"]) {
   color: blue;
-  display: none;
+  display: block;
 }
 
 ::slotted([slot="left-icon"]) {
   color: yellow;
+}
+
+.shown-list {
+  opacity: 1;
+  max-height: 1000px;
+  transition: all 0.5s ease-in-out;
+}
+
+.hidden-list {
+  opacity: 0;
+  max-height: 0px;
+  transition: all 0.5s ease-in-out;
 }
