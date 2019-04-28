@@ -16,6 +16,7 @@ export namespace Components {
     'background': string;
     'color': string;
     'display': string;
+    'fontFamily': string;
     'height': string;
     'position': string;
     'styles': any;
@@ -24,6 +25,7 @@ export namespace Components {
     'background'?: string;
     'color'?: string;
     'display'?: string;
+    'fontFamily'?: string;
     'height'?: string;
     'position'?: string;
     'styles'?: any;
