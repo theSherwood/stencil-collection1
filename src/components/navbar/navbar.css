@@ -26,7 +26,8 @@
 }
 
 .wrapper {
-  padding: 0.7em;
+  padding: 0.4em;
+  overflow: hidden;
 }
 
 #left-wrapper {
@@ -44,43 +45,46 @@
 }
 
 ::slotted([slot="left"]) {
-  color: grey;
   display: block;
-  width: auto;
-}
-
-::slotted([slot="left-icon"]) {
-  color: yellow;
 }
 
 ::slotted([slot="middle"]) {
-  color: grey;
   display: block;
-  width: auto;
-}
-
-::slotted([slot="middle-icon"]) {
-  color: yellow;
 }
 
 ::slotted([slot="right"]) {
-  color: grey;
   display: block;
-  width: auto;
 }
 
-::slotted([slot="right-icon"]) {
-  color: yellow;
-}
-
-.shown-list {
+.list-block {
+  display: flex;
+  flex-direction: column;
   opacity: 1;
   max-height: 1000px;
   transition: all 0.5s ease-in-out;
 }
 
+.list-inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.list-inline > ::slotted(*) {
+  text-align: center;
+  border: solid 1px white;
+  flex: 1 1 300px;
+  margin: 0px 0.15em;
+  padding: 0.25em;
+}
+
+.list-inline > ::slotted(*:hover) {
+  background: rgba(0, 0, 0, 0.4);
+}
+
 .hidden-list {
   opacity: 0;
   max-height: 0px;
+  overflow: hidden;
   transition: all 0.5s ease-in-out;
 }
