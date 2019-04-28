@@ -18,6 +18,14 @@
   font-family: inherit;
   padding: 0;
   margin: 0;
+  text-align: inherit;
+}
+
+*,
+*::after,
+*::before,
+::slotted(*) {
+  box-sizing: border-box;
 }
 
 #nav {
@@ -32,6 +40,7 @@
 
 #left-wrapper {
   background: rgb(145, 20, 20);
+  text-align: left;
 }
 
 #middle-wrapper {
@@ -56,12 +65,23 @@
   display: block;
 }
 
+::slotted([slot*="icon"]) {
+  display: inline-block;
+  padding: 0.25em;
+  border: solid 1px white;
+}
+
 .list-block {
   display: flex;
   flex-direction: column;
   opacity: 1;
   max-height: 1000px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-out;
+}
+
+.list-block > ::slotted(*) {
+  padding: 0.15em;
+  transition: all 0.4s ease-out;
 }
 
 .list-inline {
@@ -86,5 +106,10 @@
   opacity: 0;
   max-height: 0px;
   overflow: hidden;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-out;
+}
+
+.hidden-list > ::slotted(*) {
+  padding: 0.15em;
+  transition: all 0.4s ease-out;
 }
