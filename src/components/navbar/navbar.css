@@ -28,6 +28,8 @@
   box-sizing: border-box;
 }
 
+/* Styling */
+
 #nav {
   display: inline-grid;
   grid-template-columns: 1fr auto 1fr;
@@ -39,36 +41,40 @@
 }
 
 #left-wrapper {
-  background: rgb(145, 20, 20);
   text-align: left;
 }
 
 #middle-wrapper {
-  background: rgb(123, 12, 12);
   text-align: center;
 }
 
 #right-wrapper {
-  background: rgb(87, 1, 1);
   text-align: right;
 }
 
 ::slotted([slot="left"]) {
   display: block;
+  font-size: 0.8em;
 }
 
 ::slotted([slot="middle"]) {
   display: block;
+  font-size: 0.8em;
 }
 
 ::slotted([slot="right"]) {
   display: block;
+  font-size: 0.8em;
 }
 
 ::slotted([slot*="icon"]) {
   display: inline-block;
   padding: 0.25em;
-  border: solid 1px white;
+  transition: background-color 0.3s ease-out;
+}
+
+::slotted([slot*="icon"]:hover) {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .list-block {
@@ -80,7 +86,7 @@
 }
 
 .list-block > ::slotted(*) {
-  padding: 0.15em;
+  padding: 0.3em;
   transition: all 0.4s ease-out;
 }
 
@@ -92,10 +98,11 @@
 
 .list-inline > ::slotted(*) {
   text-align: center;
-  border: solid 1px white;
   flex: 1 1 300px;
   margin: 0px 0.15em;
   padding: 0.25em;
+  font-size: 1em;
+  transition: background-color 0.3s ease-out;
 }
 
 .list-inline > ::slotted(*:hover) {
