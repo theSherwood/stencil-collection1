@@ -18,7 +18,10 @@ export class Navbar {
   @Prop({ reflectToAttr: true }) height: string = "";
   @Prop({ reflectToAttr: true }) position: string = "fixed";
   @Prop({ reflectToAttr: true }) display: string = "block";
-  @Prop({ reflectToAttr: true }) fontFamily: string = "sans-serif";
+  @Prop({ reflectToAttr: true }) fontfamily: string = "sans-serif";
+  @Prop({ reflectToAttr: true }) fontsize: string = "1em";
+
+  @Prop({ reflectToAttr: true }) breakpoint: number = 600;
 
   componentDidLoad() {
     let slot = this.el.shadowRoot.querySelector("[name=left-icon]");
@@ -56,7 +59,6 @@ export class Navbar {
       }
       elmnt = elmnt.parentElement;
     }
-    console.log(e.target);
   }
 
   render() {
@@ -65,11 +67,15 @@ export class Navbar {
       color: this.color,
       height: this.height,
       position: this.position,
-      fontFamily: this.fontFamily,
+      fontFamily: this.fontfamily,
+      fontSize: this.fontsize,
       width: "100%",
       top: "0",
       left: "0"
     };
+
+    const w = document.documentElement.clientWidth;
+    console.log(w, this.breakpoint);
 
     return (
       <nav id="nav" style={navStyle}>
