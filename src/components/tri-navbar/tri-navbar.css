@@ -40,6 +40,12 @@
   overflow: hidden;
 }
 
+@media (min-width: 600px) {
+  .wrapper {
+    font-size: 1.2em;
+  }
+}
+
 #left-wrapper {
   text-align: left;
 }

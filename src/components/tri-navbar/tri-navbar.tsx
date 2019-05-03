@@ -1,11 +1,11 @@
 import { Component, Prop, Element, Listen, State } from "@stencil/core";
 
 @Component({
-  tag: "admls-navbar",
-  styleUrl: "./navbar.css",
+  tag: "sherwood-tri-navbar",
+  styleUrl: "./tri-navbar.css",
   shadow: true
 })
-export class Navbar {
+export class TriNavbar {
   @Element() el: HTMLElement;
 
   @State() showLeftClass = "hidden-list";
@@ -41,7 +41,7 @@ export class Navbar {
   @Listen("click")
   onclick(e) {
     let elmnt = e.target;
-    while (elmnt && !elmnt.matches("admls-navbar")) {
+    while (elmnt && !elmnt.matches("sherwood-tri-navbar")) {
       if (elmnt.matches('[slot="left-icon"]')) {
         this.showLeftClass =
           this.showLeftClass === "hidden-list" ? "list-block" : "hidden-list";
