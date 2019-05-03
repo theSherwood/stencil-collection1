@@ -29,12 +29,12 @@ export class SimpleNav {
     let elmnt = e.target;
     while (elmnt && !elmnt.matches("sherwood-simple-nav")) {
       if (elmnt.matches('[slot="left-label"]')) {
-        console.log(e);
         this.showLDropdown = !this.showLDropdown;
+        // this.showRDropdown = false;
         break;
       } else if (elmnt.matches('[slot="right-label"]')) {
-        console.log(e);
         this.showRDropdown = !this.showRDropdown;
+        // this.showLDropdown = false;
         break;
       }
       elmnt = elmnt.parentElement;
@@ -42,23 +42,31 @@ export class SimpleNav {
   }
 
   render() {
-    // console.log(this.leftbreak, this.rightbreak);
-    // console.log(this.breakL.matches, this.breakR.matches);
     return (
       <nav id="container">
         <section id="left">
-          {this.breakL.matches ? (
+          <div class="bar-wrapper">
+            {this.breakL.matches ? (
+              <slot name="left-list-item" />
+            ) : (
+              <slot name="left-label" />
+            )}
+          </div>
+          <div class={"list-wrapper show-" + this.showLDropdown}>
             <slot name="left-list-item" />
-          ) : (
-            <slot name="left-label" />
-          )}
+          </div>
         </section>
         <section id="right">
-          {this.breakR.matches ? (
+          <div class="bar-wrapper">
+            {this.breakR.matches ? (
+              <slot name="right-list-item" />
+            ) : (
+              <slot name="right-label" />
+            )}
+          </div>
+          <div class={"list-wrapper show-" + this.showRDropdown}>
             <slot name="right-list-item" />
-          ) : (
-            <slot name="right-label" />
-          )}
+          </div>
         </section>
       </nav>
     );

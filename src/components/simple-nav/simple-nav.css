@@ -7,6 +7,46 @@
 #container {
   background: slategray;
   width: 100%;
-  height: 50px;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  justify-content: space-between;
+}
+
+#left {
+  flex: 0 1 auto;
+}
+
+#right {
+  flex: 0 1 auto;
+}
+
+.bar-wrapper {
+  font-size: 1.2em;
+}
+
+.list-wrapper {
+  position: absolute;
+  background: slategray;
+  left: 0;
+  right: 0;
+  padding: 0.5em;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 300ms ease-in-out;
+}
+
+.show-true {
+  transform: scale(1, 1);
+}
+
+.list-wrapper ::slotted([slot="left-list-item"]),
+.list-wrapper ::slotted([slot="right-list-item"]) {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.show-true ::slotted([slot="left-list-item"]),
+.show-true ::slotted([slot="right-list-item"]) {
+  opacity: 1;
 }
