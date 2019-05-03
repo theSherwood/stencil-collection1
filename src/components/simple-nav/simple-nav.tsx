@@ -6,27 +6,20 @@ import { Component, Prop, State, Listen } from "@stencil/core";
   shadow: true
 })
 export class SimpleNav {
-  @Prop() leftbreak: string = "600";
-  @Prop() rightbreak: string = "400";
-
-  @State() breakL = window.matchMedia(`(min-width: ${this.leftbreak}px)`);
-  @State() breakR = window.matchMedia(`(min-width: ${this.rightbreak}px)`);
+  @State() vw: number = document.documentElement.clientWidth;
 
   @State() showLDropdown: boolean = false;
   @State() showRDropdown: boolean = false;
 
-  // @State() lZIndex: number = -1;
-  // @State() rZIndex: number = -2;
+  @Prop({ reflectToAttr: true }) leftbreak: string = "600";
+  @Prop({ reflectToAttr: true }) rightbreak: string = "600";
+
+  updateViewportWidth = () => {
+    this.vw = document.documentElement.clientWidth;
+  };
 
   componentDidLoad() {
-    this.breakL.addListener(() => {
-      this.breakL = window.matchMedia(`(min-width: ${this.leftbreak}px)`);
-      if (this.breakL.matches) this.showLDropdown = false;
-    });
-    this.breakR.addListener(() => {
-      this.breakR = window.matchMedia(`(min-width: ${this.rightbreak}px)`);
-      if (this.breakR.matches) this.showRDropdown = false;
-    });
+    window.addEventListener("resize", this.updateViewportWidth);
   }
 
   @Listen("click")
@@ -47,11 +40,15 @@ export class SimpleNav {
   }
 
   render() {
+    const { vw, leftbreak, rightbreak } = this;
+
+    console.log("render");
+
     return (
       <nav id="container">
         <section id="left">
           <div class="bar-wrapper">
-            {this.breakL.matches ? (
+            {vw > Number(leftbreak) ? (
               <slot name="left-list-item" />
             ) : (
               [
@@ -65,7 +62,7 @@ export class SimpleNav {
         </section>
         <section id="right">
           <div class="bar-wrapper">
-            {this.breakR.matches ? (
+            {vw > Number(rightbreak) ? (
               <slot name="right-list-item" />
             ) : (
               [
