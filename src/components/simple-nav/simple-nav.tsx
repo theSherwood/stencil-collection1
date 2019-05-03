@@ -15,12 +15,17 @@ export class SimpleNav {
   @State() showLDropdown: boolean = false;
   @State() showRDropdown: boolean = false;
 
+  // @State() lZIndex: number = -1;
+  // @State() rZIndex: number = -2;
+
   componentDidLoad() {
     this.breakL.addListener(() => {
       this.breakL = window.matchMedia(`(min-width: ${this.leftbreak}px)`);
+      if (this.breakL.matches) this.showLDropdown = false;
     });
     this.breakR.addListener(() => {
       this.breakR = window.matchMedia(`(min-width: ${this.rightbreak}px)`);
+      if (this.breakR.matches) this.showRDropdown = false;
     });
   }
 
@@ -30,11 +35,11 @@ export class SimpleNav {
     while (elmnt && !elmnt.matches("sherwood-simple-nav")) {
       if (elmnt.matches('[slot="left-label"]')) {
         this.showLDropdown = !this.showLDropdown;
-        // this.showRDropdown = false;
+        this.showRDropdown = false;
         break;
       } else if (elmnt.matches('[slot="right-label"]')) {
         this.showRDropdown = !this.showRDropdown;
-        // this.showLDropdown = false;
+        this.showLDropdown = false;
         break;
       }
       elmnt = elmnt.parentElement;
@@ -49,11 +54,13 @@ export class SimpleNav {
             {this.breakL.matches ? (
               <slot name="left-list-item" />
             ) : (
-              <slot name="left-label" />
+              [
+                <slot name="left-label" />,
+                <div class={"list-wrapper show-" + this.showLDropdown}>
+                  <slot name="left-list-item" />
+                </div>
+              ]
             )}
-          </div>
-          <div class={"list-wrapper show-" + this.showLDropdown}>
-            <slot name="left-list-item" />
           </div>
         </section>
         <section id="right">
@@ -61,11 +68,13 @@ export class SimpleNav {
             {this.breakR.matches ? (
               <slot name="right-list-item" />
             ) : (
-              <slot name="right-label" />
+              [
+                <slot name="right-label" />,
+                <div class={"list-wrapper show-" + this.showRDropdown}>
+                  <slot name="right-list-item" />
+                </div>
+              ]
             )}
-          </div>
-          <div class={"list-wrapper show-" + this.showRDropdown}>
-            <slot name="right-list-item" />
           </div>
         </section>
       </nav>
