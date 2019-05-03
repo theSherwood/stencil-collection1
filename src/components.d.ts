@@ -12,20 +12,33 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface AdmlsNavbar {
+  interface SherwoodSimpleNav {
+    'leftbreak': string;
+    'rightbreak': string;
+  }
+  interface SherwoodSimpleNavAttributes extends StencilHTMLAttributes {
+    'leftbreak'?: string;
+    'rightbreak'?: string;
+  }
+
+  interface SherwoodTriNavbar {
     'background': string;
+    'breakpoint': number;
     'color': string;
     'display': string;
-    'fontFamily': string;
+    'fontfamily': string;
+    'fontsize': string;
     'height': string;
     'position': string;
     'styles': any;
   }
-  interface AdmlsNavbarAttributes extends StencilHTMLAttributes {
+  interface SherwoodTriNavbarAttributes extends StencilHTMLAttributes {
     'background'?: string;
+    'breakpoint'?: number;
     'color'?: string;
     'display'?: string;
-    'fontFamily'?: string;
+    'fontfamily'?: string;
+    'fontsize'?: string;
     'height'?: string;
     'position'?: string;
     'styles'?: any;
@@ -34,26 +47,36 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
-    'AdmlsNavbar': Components.AdmlsNavbar;
+    'SherwoodSimpleNav': Components.SherwoodSimpleNav;
+    'SherwoodTriNavbar': Components.SherwoodTriNavbar;
   }
 
   interface StencilIntrinsicElements {
-    'admls-navbar': Components.AdmlsNavbarAttributes;
+    'sherwood-simple-nav': Components.SherwoodSimpleNavAttributes;
+    'sherwood-tri-navbar': Components.SherwoodTriNavbarAttributes;
   }
 
 
-  interface HTMLAdmlsNavbarElement extends Components.AdmlsNavbar, HTMLStencilElement {}
-  var HTMLAdmlsNavbarElement: {
-    prototype: HTMLAdmlsNavbarElement;
-    new (): HTMLAdmlsNavbarElement;
+  interface HTMLSherwoodSimpleNavElement extends Components.SherwoodSimpleNav, HTMLStencilElement {}
+  var HTMLSherwoodSimpleNavElement: {
+    prototype: HTMLSherwoodSimpleNavElement;
+    new (): HTMLSherwoodSimpleNavElement;
+  };
+
+  interface HTMLSherwoodTriNavbarElement extends Components.SherwoodTriNavbar, HTMLStencilElement {}
+  var HTMLSherwoodTriNavbarElement: {
+    prototype: HTMLSherwoodTriNavbarElement;
+    new (): HTMLSherwoodTriNavbarElement;
   };
 
   interface HTMLElementTagNameMap {
-    'admls-navbar': HTMLAdmlsNavbarElement
+    'sherwood-simple-nav': HTMLSherwoodSimpleNavElement
+    'sherwood-tri-navbar': HTMLSherwoodTriNavbarElement
   }
 
   interface ElementTagNameMap {
-    'admls-navbar': HTMLAdmlsNavbarElement;
+    'sherwood-simple-nav': HTMLSherwoodSimpleNavElement;
+    'sherwood-tri-navbar': HTMLSherwoodTriNavbarElement;
   }
 
 
