@@ -6,7 +6,8 @@ import { Component, Prop, State, Listen } from "@stencil/core";
   shadow: true
 })
 export class SimpleNav {
-  @State() vw: number = document.documentElement.clientWidth;
+  @State() breakL: boolean = false;
+  @State() breakR: boolean = false;
 
   @State() showLDropdown: boolean = false;
   @State() showRDropdown: boolean = false;
@@ -15,7 +16,9 @@ export class SimpleNav {
   @Prop({ reflectToAttr: true }) rightbreak: string = "600";
 
   updateViewportWidth = () => {
-    this.vw = document.documentElement.clientWidth;
+    const vw = document.documentElement.clientWidth;
+    this.breakL = vw > Number(this.leftbreak);
+    this.breakR = vw > Number(this.rightbreak);
   };
 
   componentDidLoad() {
@@ -40,15 +43,13 @@ export class SimpleNav {
   }
 
   render() {
-    const { vw, leftbreak, rightbreak } = this;
-
     console.log("render");
 
     return (
       <nav id="container">
         <section id="left">
           <div class="bar-wrapper">
-            {vw > Number(leftbreak) ? (
+            {this.breakL ? (
               <slot name="left-list-item" />
             ) : (
               [
@@ -62,7 +63,7 @@ export class SimpleNav {
         </section>
         <section id="right">
           <div class="bar-wrapper">
-            {vw > Number(rightbreak) ? (
+            {this.breakR ? (
               <slot name="right-list-item" />
             ) : (
               [
