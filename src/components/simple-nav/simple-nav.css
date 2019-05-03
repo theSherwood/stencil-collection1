@@ -11,6 +11,7 @@
   flex-direction: row;
   padding: 0.5em;
   justify-content: space-between;
+  position: fixed;
 }
 
 #left {
@@ -28,6 +29,7 @@
 .list-wrapper {
   position: absolute;
   background: slategray;
+  top: 100%;
   left: 0;
   right: 0;
   padding: 0.5em;
@@ -40,13 +42,16 @@
   transform: scale(1, 1);
 }
 
-.list-wrapper ::slotted([slot="left-list-item"]),
-.list-wrapper ::slotted([slot="right-list-item"]) {
+.list-wrapper ::slotted(*) {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
+  display: block;
 }
 
-.show-true ::slotted([slot="left-list-item"]),
-.show-true ::slotted([slot="right-list-item"]) {
+.show-true ::slotted(*) {
   opacity: 1;
+}
+
+#right .list-wrapper {
+  text-align: right;
 }
