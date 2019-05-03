@@ -7,25 +7,39 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
     <title>Stencil Component Starter</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
     <script src="/build/mycomponent.js"></script>
   </head>
   <body>
-    <admls-navbar>
+    <sherwood-simple-nav leftbreak="600" rightbreak="400">
+      <span slot="left-list-item">left content</span>
+      <span slot="left-label">left label</span>
+      <span slot="right-list-item">right content</span>
+      <span slot="right-label">right label</span>
+    </sherwood-simple-nav>
+
+    <!-- <sherwood-tri-navbar fontsize="1.2em">
       <button slot="left">Left1</button>
       <span slot="left">Left2</span>
-      <!-- <span slot="left">Left3</span> -->
-      <!-- <span slot="left-icon">LeftI</span> -->
-      <!-- <span slot="middle">Middle1</span>
-      <span slot="middle">Long Middle2</span>
-      <span slot="middle">Middle3</span>
-      <span slot="middle-icon">MiddleI</span> -->
-      <span slot="right">Right1</span>
+      <span slot="left">Left3</span> -->
+    <!-- <span slot="left-icon">LeftI</span> -->
+    <!-- <span slot="middle">Middle1</span>
+      <span slot="middle">Middle2</span> -->
+    <!-- <span slot="middle">Long Middle2</span> -->
+    <!-- <span slot="middle">Middle3</span>
+      <span slot="middle">Middle4</span> -->
+    <!-- <span slot="middle-icon">MiddleI</span> -->
+    <!-- <span slot="right">Right1</span>
       <span slot="right">Right2</span>
       <a href="#" slot="right">Right3</a>
       <span slot="right">Right4</span>
       <span slot="right">Right5</span>
       <span slot="right-icon">RightI</span>
-    </admls-navbar>
+    </sherwood-tri-navbar>  -->
     <br /><br /><br />
     <a href="#">Link</a>
   </body>
