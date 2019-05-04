@@ -11,18 +11,34 @@
       body {
         margin: 0;
       }
+
+      sherwood-simple-nav {
+        font-size: 1.5em;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
     </style>
     <script src="/build/mycomponent.js"></script>
   </head>
   <body>
-    <sherwood-simple-nav leftbreak="700" rightbreak="500">
+    <sherwood-simple-nav
+      leftbreak="700"
+      rightbreak="500"
+      shadowstyles="#container {padding: 1em; border-bottom: 2px red solid;}"
+    >
+      <span slot="style-payload-wrapper"
+        ><style class="payload">
+          #container {
+            border-bottom: solid 15px green;
+          }
+        </style></span
+      >
       <span slot="left-list-item">left content 1</span>
       <span slot="left-list-item">left content 2</span>
       <span slot="left-list-item">left content 3</span>
       <span slot="left-list-item">left content 4</span>
       <span slot="left-label">left label</span>
       <span slot="right-list-item">right content 1</span>
-      <span slot="right-list-item">right content 2</span>
+      <span slot="right-list-item">long right content 2</span>
       <span slot="right-list-item">right content 3</span>
       <span slot="right-label">right label</span>
     </sherwood-simple-nav>
@@ -47,5 +63,7 @@
     </sherwood-tri-navbar>  -->
     <br /><br /><br />
     <a href="#">Link</a>
+    <br />
+    <span id="container">Here is some text here</span>
   </body>
 </html>

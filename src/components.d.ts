@@ -13,12 +13,20 @@ import '@stencil/core';
 export namespace Components {
 
   interface SherwoodSimpleNav {
+    'background': string;
+    'color': string;
+    'jsStyles': any;
     'leftbreak': string;
     'rightbreak': string;
+    'shadowstyles': string;
   }
   interface SherwoodSimpleNavAttributes extends StencilHTMLAttributes {
+    'background'?: string;
+    'color'?: string;
+    'jsStyles'?: any;
     'leftbreak'?: string;
     'rightbreak'?: string;
+    'shadowstyles'?: string;
   }
 
   interface SherwoodTriNavbar {

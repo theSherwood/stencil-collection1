@@ -5,7 +5,6 @@
 }
 
 #container {
-  background: slategray;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -22,17 +21,14 @@
   flex: 0 1 auto;
 }
 
-.bar-wrapper {
-  font-size: 1.2em;
-}
-
 .list-wrapper {
+  font-size: 0.8em;
   position: absolute;
-  background: slategray;
   top: 100%;
   left: 0;
   right: 0;
   padding: 0.5em;
+  padding-bottom: 1em;
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 300ms ease-in-out;
@@ -46,6 +42,7 @@
   opacity: 0;
   transition: opacity 300ms ease-in-out;
   display: block;
+  padding: 0.25em;
 }
 
 .show-true ::slotted(*) {
