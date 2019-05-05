@@ -1,4 +1,4 @@
-import { Component, Prop, State, Listen, Element } from "@stencil/core";
+import { Component, Prop, State, Listen } from "@stencil/core";
 
 @Component({
   tag: "sherwood-simple-nav",
@@ -6,8 +6,6 @@ import { Component, Prop, State, Listen, Element } from "@stencil/core";
   shadow: true
 })
 export class SimpleNav {
-  @Element() el: HTMLElement;
-
   @State() breakL: boolean = false;
   @State() breakR: boolean = false;
 
@@ -17,13 +15,11 @@ export class SimpleNav {
   @Prop({ reflectToAttr: true }) leftbreak: string = "600";
   @Prop({ reflectToAttr: true }) rightbreak: string = "600";
 
-  @Prop({ reflectToAttr: true }) background: string = "#292d37";
-  @Prop({ reflectToAttr: true }) color: string = "#fff";
+  // Basic styling options
+  @Prop({ reflectToAttr: true }) background: string = "";
 
+  // Style the shadow dom with css syntax
   @Prop({ reflectToAttr: true }) shadowstyles: string = "";
-  @Prop() jsStyles = {};
-
-  @State() stylePayload: HTMLStyleElement;
 
   updateViewportWidth = () => {
     const vw = document.documentElement.clientWidth;
@@ -33,18 +29,6 @@ export class SimpleNav {
 
   componentDidLoad() {
     window.addEventListener("resize", this.updateViewportWidth);
-
-    const styleWrapper = this.el.shadowRoot.querySelector(
-      "[name=style-payload-wrapper]"
-    );
-    this.stylePayload = ((styleWrapper as HTMLSlotElement).assignedNodes()[0] as HTMLElement).querySelector(
-      ".payload"
-    );
-    console.log(
-      this.stylePayload
-      // "style-wrapper",
-      // (styleWrapper as HTMLSlotElement).assignedNodes()[0]
-    );
   }
 
   componentDidUnload() {
@@ -69,15 +53,15 @@ export class SimpleNav {
   }
 
   render() {
-    const { background, color, breakL, breakR, jsStyles, shadowstyles } = this;
-
-    console.log(this.stylePayload);
+    const { background, breakL, breakR } = this;
 
     return (
-      <nav id="container" style={{ background, color, ...jsStyles }}>
-        <style>{shadowstyles}</style>
-        <style>{this.stylePayload && this.stylePayload.textContent}</style>
-        <slot name="style-payload-wrapper" />
+      <nav
+        id="container"
+        style={{
+          background
+        }}
+      >
         <section id="left">
           <div class="bar-wrapper">
             {breakL ? (
@@ -112,6 +96,7 @@ export class SimpleNav {
             )}
           </div>
         </section>
+        <style>{this.shadowstyles}</style>
       </nav>
     );
   }

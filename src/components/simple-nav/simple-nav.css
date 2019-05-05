@@ -4,13 +4,22 @@
   box-sizing: border-box;
 }
 
+:host {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: #292d37;
+  color: white;
+}
+
 #container {
   width: 100%;
   display: flex;
   flex-direction: row;
   padding: 0.5em;
   justify-content: space-between;
-  position: fixed;
+  position: relative;
 }
 
 #left {
@@ -23,6 +32,7 @@
 
 .list-wrapper {
   font-size: 0.8em;
+  background: #292d37;
   position: absolute;
   top: 100%;
   left: 0;

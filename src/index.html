@@ -15,23 +15,13 @@
       sherwood-simple-nav {
         font-size: 1.5em;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: red;
       }
     </style>
     <script src="/build/mycomponent.js"></script>
   </head>
   <body>
-    <sherwood-simple-nav
-      leftbreak="700"
-      rightbreak="500"
-      shadowstyles="#container {padding: 1em; border-bottom: 2px red solid;}"
-    >
-      <span slot="style-payload-wrapper"
-        ><style class="payload">
-          #container {
-            border-bottom: solid 15px green;
-          }
-        </style></span
-      >
+    <sherwood-simple-nav leftbreak="700" rightbreak="500">
       <span slot="left-list-item">left content 1</span>
       <span slot="left-list-item">left content 2</span>
       <span slot="left-list-item">left content 3</span>

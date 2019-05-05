@@ -15,7 +15,6 @@ export namespace Components {
   interface SherwoodSimpleNav {
     'background': string;
     'color': string;
-    'jsStyles': any;
     'leftbreak': string;
     'rightbreak': string;
     'shadowstyles': string;
@@ -23,7 +22,6 @@ export namespace Components {
   interface SherwoodSimpleNavAttributes extends StencilHTMLAttributes {
     'background'?: string;
     'color'?: string;
-    'jsStyles'?: any;
     'leftbreak'?: string;
     'rightbreak'?: string;
     'shadowstyles'?: string;
