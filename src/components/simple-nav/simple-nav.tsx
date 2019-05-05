@@ -15,9 +15,6 @@ export class SimpleNav {
   @Prop({ reflectToAttr: true }) leftbreak: string = "600";
   @Prop({ reflectToAttr: true }) rightbreak: string = "600";
 
-  // Basic styling options
-  @Prop({ reflectToAttr: true }) background: string = "";
-
   // Style the shadow dom with css syntax
   @Prop({ reflectToAttr: true }) shadowstyles: string = "";
 
@@ -53,50 +50,43 @@ export class SimpleNav {
   }
 
   render() {
-    const { background, breakL, breakR } = this;
+    const { breakL, breakR } = this;
 
     return (
-      <nav
-        id="container"
-        style={{
-          background
-        }}
-      >
-        <section id="left">
-          <div class="bar-wrapper">
-            {breakL ? (
+      <nav>
+        <section id="navbar">
+          <section id="left">
+            <div class="bar-wrapper">
+              {breakL ? (
+                <slot name="left-list-item" />
+              ) : (
+                <slot name="left-label" />
+              )}
+            </div>
+          </section>
+          <section id="right">
+            <div class="bar-wrapper">
+              {breakR ? (
+                <slot name="right-list-item" />
+              ) : (
+                <slot name="right-label" />
+              )}
+            </div>
+          </section>
+          <style>{this.shadowstyles}</style>
+        </section>
+        <section id="dropdowns">
+          {breakL ? null : (
+            <div class={"left list-wrapper show-" + this.showLDropdown}>
               <slot name="left-list-item" />
-            ) : (
-              [
-                <slot name="left-label" />,
-                <div
-                  class={"list-wrapper show-" + this.showLDropdown}
-                  style={{ background }}
-                >
-                  <slot name="left-list-item" />
-                </div>
-              ]
-            )}
-          </div>
-        </section>
-        <section id="right">
-          <div class="bar-wrapper">
-            {breakR ? (
+            </div>
+          )}
+          {breakR ? null : (
+            <div class={"right list-wrapper show-" + this.showRDropdown}>
               <slot name="right-list-item" />
-            ) : (
-              [
-                <slot name="right-label" />,
-                <div
-                  class={"list-wrapper show-" + this.showRDropdown}
-                  style={{ background }}
-                >
-                  <slot name="right-list-item" />
-                </div>
-              ]
-            )}
-          </div>
+            </div>
+          )}
         </section>
-        <style>{this.shadowstyles}</style>
       </nav>
     );
   }
